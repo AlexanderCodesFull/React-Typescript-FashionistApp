@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  font-family: "Urbanist", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+input {
+  outline: none;
+}
+
+li {
+  list-style: none;
+}
+
+button:active {
+  opacity: 0.5;
+  transition: opacity 0.2s ease-in-out;
+  scale: 0.99;
+}

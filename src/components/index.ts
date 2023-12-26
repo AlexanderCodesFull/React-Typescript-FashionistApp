@@ -1,0 +1,10 @@
+export { Categories } from "./Categories";
+export { CategoryItem } from "./CategoryItem";
+export { Footer } from "./Footer";
+export { NavBar } from "./NavBar";
+export { NewsLetter } from "./NewsLetter";
+export { ProductCard } from "./ProductCard";
+export { Products } from "./Products";
+export { Register } from "./Register";
+export { Slider } from "./Slider";
+export { Announcement } from "./Announcement";
