@@ -1,1 +1,1 @@
-# React + TypeScript + Vite
+## React + Typescript + Styled-components Fashionist App
