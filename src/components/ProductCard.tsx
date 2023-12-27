@@ -5,6 +5,8 @@ import {
 } from "@mui/icons-material";
 import styled from "styled-components";
 import { Product } from "@interface";
+import { useCart } from "../hooks/useCart";
+import { Link } from "react-router-dom";
 
 const Info = styled.div`
   opacity: 0;
@@ -61,23 +63,31 @@ const Icon = styled.div`
   justify-content: center;
   margin: 10px;
   transition: all 0.5s ease;
+
   &:hover {
     background-color: #e9f5f5;
     transform: scale(1.1);
   }
+  &:active {
+    scale: 0.95;
+    background-color: #0f9e35;
+  }
 `;
 
-export const ProductCard = ({ img }: Product) => {
+export const ProductCard = (prod: Product) => {
+  const { addCart } = useCart();
   return (
     <Container>
       <Circle />
-      <Image src={img} />
+      <Image src={prod.img} />
       <Info>
-        <Icon>
+        <Icon onClick={() => addCart(prod)}>
           <ShoppingCartOutlined />
         </Icon>
         <Icon>
-          <SearchOutlined />
+          <Link to={`/product/${prod.id}`}>
+            <SearchOutlined />
+          </Link>
         </Icon>
         <Icon>
           <FavoriteBorderOutlined />

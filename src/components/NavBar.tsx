@@ -2,9 +2,18 @@ import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import Badge from "@mui/material/Badge";
 import styled from "styled-components";
 import { mobile } from "@util/responsive";
+import { Link, NavLink } from "react-router-dom";
+import { useCart } from "../hooks/useCart";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const Container = styled.div`
   height: 60px;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #fff;
   ${mobile({ height: "50px" })}
 `;
 
@@ -65,7 +74,15 @@ const MenuItem = styled.div`
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
+const MenuBtn = styled.span`
+  @media (min-width: 730px) {
+    visibility: hidden;
+    display: none;
+  }
+`;
+
 export const NavBar = () => {
+  const { cart } = useCart();
   return (
     <Container>
       <Wrapper>
@@ -77,16 +94,30 @@ export const NavBar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>FASHIONIST</Logo>
+          <NavLink to="/">
+            <Logo>FASHIONIST</Logo>
+          </NavLink>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
-          <MenuItem>
-            <Badge badgeContent={4} color="primary">
-              <ShoppingCartOutlined />
-            </Badge>
-          </MenuItem>
+          <NavLink to="/register">
+            <MenuItem>REGISTER</MenuItem>
+          </NavLink>
+          <NavLink to="/login">
+            <MenuItem>SIGN IN</MenuItem>
+          </NavLink>
+          <Link to="/cart">
+            <MenuItem>
+              <Badge
+                badgeContent={cart.length || "0"}
+                color={cart.length == 0 ? "error" : "primary"}
+              >
+                <ShoppingCartOutlined />
+              </Badge>
+            </MenuItem>
+          </Link>
+          <MenuBtn>
+            <MenuIcon />
+          </MenuBtn>
         </Right>
       </Wrapper>
     </Container>

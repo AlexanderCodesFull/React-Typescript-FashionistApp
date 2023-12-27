@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { mobile } from "@util/responsive";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import { sliderItems } from "@data/all";
+import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -103,7 +104,9 @@ export const Slider = () => {
             <InfoContainer>
               <Title>{title}</Title>
               <Desc>{desc}</Desc>
-              <Button>SHOW NOW</Button>
+              <NavLink to="/product-list">
+                <Button>SHOW MORE</Button>
+              </NavLink>
             </InfoContainer>
           </Slide>
         ))}

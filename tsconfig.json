@@ -17,7 +17,8 @@
       "@data/*": ["./src/data/*"],
       "@util/*": ["./src/utils/*"],
       "@asset/*": ["./src/assets/"],
-      "@interface": ["./src/interface/types.ts"]
+      "@interface": ["./src/interface/types.ts"],
+      "@router": ["./src/router/routes.tsx"]
     },
 
     /* Bundler mode */

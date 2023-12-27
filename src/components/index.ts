@@ -1,3 +1,4 @@
+export { Summary } from "./Summary";
 export { Categories } from "./Categories";
 export { CategoryItem } from "./CategoryItem";
 export { Footer } from "./Footer";

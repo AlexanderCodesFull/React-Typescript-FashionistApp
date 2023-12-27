@@ -1,9 +1,16 @@
 import { Add, Remove } from "@mui/icons-material";
 import styled from "styled-components";
-import { Announcement, Footer, NavBar, NewsLetter } from "@component";
 import { mobile } from "@util/responsive";
+import { animate } from "@util/animate";
+import { Link, useParams } from "react-router-dom";
+import { popularProducts } from "@data/all";
+import { Product as ProductItem } from "@interface";
+import { useCart } from "../hooks/useCart";
 
-const Container = styled.div``;
+const Container = styled.div`
+  ${animate()}
+  padding-top: 3rem;
+`;
 
 const Wrapper = styled.div`
   padding: 50px;
@@ -17,7 +24,7 @@ const ImgContainer = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  height: 90vh;
+  height: 70vh;
   object-fit: cover;
   ${mobile({ height: "40vh" })}
 `;
@@ -76,7 +83,7 @@ const FilterSize = styled.select`
 const FilterSizeOption = styled.option``;
 
 const AddContainer = styled.div`
-  width: 50%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -90,7 +97,7 @@ const AmountContainer = styled.div`
 `;
 
 const Amount = styled.span`
-  width: 30px;
+  width: 3rem;
   height: 30px;
   border-radius: 10px;
   border: 1px solid teal;
@@ -100,26 +107,40 @@ const Amount = styled.span`
   margin: 0px 5px;
 `;
 
-const Button = styled.button`
+const Button = styled.button<{ color: string }>`
   padding: 15px;
-  border: 2px solid teal;
-  background-color: white;
+  border: 2px solid #000;
+  background-color: ${(props) => (props.color === "black" ? "#000" : "#fff")};
   cursor: pointer;
   font-weight: 500;
+  margin: 0 1rem;
+  width: max-content;
+  color: ${(props) => (props.color === "black" ? "#fff" : "#000")};
+`;
 
-  &:hover {
-    background-color: #f8f4f4;
-  }
+const TopButton = styled.button<{ type: string }>`
+  padding: 0.7rem;
+  margin: 0 0 2rem 0;
+  background-color: white;
+  font-weight: bold;
 `;
 
 export const Product = () => {
+  const param = useParams();
+  const { addCart, cart, changeQuantity } = useCart();
+  const prod: ProductItem | undefined = popularProducts.find(
+    (el) => el.id === Number(param.id)
+  );
+  const quant = cart.find((el) => el.product.id === Number(param.id));
+
   return (
     <Container>
-      <NavBar />
-      <Announcement />
       <Wrapper>
         <ImgContainer>
-          <Image src="https://i.ibb.co/S6qMxwr/jean.jpg" />
+          <Link to="/product-list">
+            <TopButton type="">CONTINUE SHOPPING</TopButton>
+          </Link>
+          <Image src={prod?.img || "/src/assets/img/product/prod-5.avif"} />
         </ImgContainer>
         <InfoContainer>
           <Title>Denim Jumpsuit</Title>
@@ -140,7 +161,7 @@ export const Product = () => {
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize>
+              <FilterSize defaultValue="M">
                 <FilterSizeOption>XS</FilterSizeOption>
                 <FilterSizeOption>S</FilterSizeOption>
                 <FilterSizeOption>M</FilterSizeOption>
@@ -151,16 +172,20 @@ export const Product = () => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
+              <Button color="" onClick={() => changeQuantity(-1, prod!)}>
+                <Remove />
+              </Button>
+              <Amount>{quant?.quantity || 1}</Amount>
+              <Button color="black" onClick={() => changeQuantity(1, prod!)}>
+                <Add />
+              </Button>
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button color="" onClick={() => addCart(prod!)}>
+              ADD TO CART
+            </Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
-      <NewsLetter />
-      <Footer />
     </Container>
   );
 };

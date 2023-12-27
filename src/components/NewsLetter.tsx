@@ -10,10 +10,6 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
 `;
-const Title = styled.h1`
-  font-size: 70px;
-  margin-bottom: 20px;
-`;
 
 const Desc = styled.div`
   font-size: 24px;
@@ -48,7 +44,6 @@ const Button = styled.button`
 export const NewsLetter = () => {
   return (
     <Container>
-      <Title>Newsletter</Title>
       <Desc>Get timely updates from your favorite products.</Desc>
       <InputContainer>
         <Input placeholder="Your email" />

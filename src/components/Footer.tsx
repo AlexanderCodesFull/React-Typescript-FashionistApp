@@ -1,18 +1,14 @@
-import {
-  Facebook,
-  Instagram,
-  MailOutline,
-  Phone,
-  Pinterest,
-  Room,
-  Twitter,
-} from "@mui/icons-material";
+import { MailOutline, Phone } from "@mui/icons-material";
 import styled from "styled-components";
 import { mobile } from "@util/responsive";
 
 const Container = styled.div`
   display: flex;
-  ${mobile({ flexDirection: "column" })}
+  border: 1px solid #00000045;
+  padding-top: 1rem;
+  background-color: #000000;
+  color: white;
+  ${mobile({ flexDirection: "column" })};
 `;
 
 const Left = styled.div`
@@ -30,18 +26,6 @@ const Desc = styled.p`
 
 const SocialContainer = styled.div`
   display: flex;
-`;
-
-const SocialIcon = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: white;
-  background-color: #${(props) => props.color};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 20px;
 `;
 
 const Center = styled.div`
@@ -93,23 +77,10 @@ export const Footer = () => {
           the majority have suffered alteration in some form, by injected
           humour, or randomised words which don’t look even slightly believable.
         </Desc>
-        <SocialContainer>
-          <SocialIcon color="3B5999">
-            <Facebook />
-          </SocialIcon>
-          <SocialIcon color="E4405F">
-            <Instagram />
-          </SocialIcon>
-          <SocialIcon color="55ACEE">
-            <Twitter />
-          </SocialIcon>
-          <SocialIcon color="E60023">
-            <Pinterest />
-          </SocialIcon>
-        </SocialContainer>
+        <SocialContainer></SocialContainer>
       </Left>
       <Center>
-        <Title>Useful Links</Title>
+        <Title>Navigation</Title>
         <List>
           <ListItem>Home</ListItem>
           <ListItem>Cart</ListItem>
@@ -126,16 +97,12 @@ export const Footer = () => {
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <Room style={{ marginRight: "10px" }} /> 622 Dixie Path , South
-          Tobinchester 98336
-        </ContactItem>
-        <ContactItem>
           <Phone style={{ marginRight: "10px" }} /> +591 734 562 78
         </ContactItem>
         <ContactItem>
           <MailOutline style={{ marginRight: "10px" }} /> contact@jamc.dev
         </ContactItem>
-        <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
+        <Payment src="/src/assets/img/other/payment.avif" />
       </Right>
     </Container>
   );

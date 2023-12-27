@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { Announcement } from "../components/Announcement";
 import { Products } from "../components/Products";
-import { Footer } from "../components/Footer";
 import { mobile } from "../utils/responsive";
-import { NavBar } from "../components/NavBar";
 import { NewsLetter } from "../components/NewsLetter";
+import { animate } from "@util/animate";
 
-const Container = styled.div``;
+const Container = styled.div`
+  ${animate()}
+`;
 
 const Title = styled.h1`
   margin: 20px;
@@ -39,16 +39,11 @@ const Option = styled.option``;
 export const ProductList = () => {
   return (
     <Container>
-      <NavBar />
-      <Announcement />
       <Title>Dresses</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
-          <Select>
-            <Option disabled selected>
-              Color
-            </Option>
+          <Select defaultValue="blue">
             <Option>White</Option>
             <Option>Black</Option>
             <Option>Red</Option>
@@ -56,10 +51,7 @@ export const ProductList = () => {
             <Option>Yellow</Option>
             <Option>Green</Option>
           </Select>
-          <Select>
-            <Option disabled selected>
-              Size
-            </Option>
+          <Select defaultValue="Size">
             <Option>XS</Option>
             <Option>S</Option>
             <Option>M</Option>
@@ -69,16 +61,14 @@ export const ProductList = () => {
         </Filter>
         <Filter>
           <FilterText>Sort Products:</FilterText>
-          <Select>
-            <Option selected>Newest</Option>
-            <Option>Price (asc)</Option>
-            <Option>Price (desc)</Option>
+          <Select defaultValue="Newest">
+            <Option>Price (min)</Option>
+            <Option>Price (max)</Option>
           </Select>
         </Filter>
       </FilterContainer>
       <Products />
       <NewsLetter />
-      <Footer />
     </Container>
   );
 };

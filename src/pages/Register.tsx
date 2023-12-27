@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { mobile } from "../utils/responsive";
+import { animate } from "@util/animate";
 
 const Container = styled.div`
   width: 100vw;
@@ -8,12 +9,12 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("https://images.pexels.com/photos/6984661/pexels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-      center;
+    url("/src/assets/img/category/cat-register.avif") center;
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
+  ${animate()}
 `;
 
 const Wrapper = styled.div`

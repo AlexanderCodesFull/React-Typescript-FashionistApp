@@ -1,33 +1,26 @@
-// import {
-//   Announcement,
-//   Categories,
-//   Footer,
-//   NavBar,
-//   NewsLetter,
-//   Products,
-//   Slider,
-// } from "@component";
-// import { ProductList } from "./ProductList";
-// import { Product } from "./Product";
-// import { Login } from "./Login";
-// import Register from "./Register";
-import { Cart } from "./Cart";
+import {
+  Announcement,
+  Categories,
+  NewsLetter,
+  Products,
+  Slider,
+} from "@component";
+import { animate } from "@util/animate";
+import styled from "styled-components";
+
+const Container = styled.div`
+  padding-top: 4rem;
+  ${animate()}
+`;
 
 export const Home = () => {
   return (
-    <>
-      {/* <Announcement />
-      <NavBar />
+    <Container>
+      <Announcement />
       <Slider />
       <Categories />
       <Products />
       <NewsLetter />
-      <Footer /> */}
-      {/* <ProductList /> */}
-      {/* <Product /> */}
-      {/* <Login /> */}
-      {/* <Register /> */}
-      <Cart />
-    </>
+    </Container>
   );
 };
